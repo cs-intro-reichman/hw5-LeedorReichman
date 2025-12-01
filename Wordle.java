@@ -107,8 +107,13 @@ public class Wordle {
             // Loop until you read a valid guess
             while (!valid) {
                 System.out.print("Enter your guess (5-letter word): ");
-                guess = inp.readLine().toLowerCase();
-                
+                String line = inp.readLine();
+                if (line == null) {
+                    guess = "";
+                } else {
+                    guess = line.trim().toUpperCase();
+                }
+
                 if (guess.length() != WORD_LENGTH) {
                     System.out.println("Invalid word. Please try again.");
                 } else {
@@ -134,7 +139,7 @@ public class Wordle {
         }
 
         if (!won) {
-            // ... follow the assignment examples for how the printing should look like
+            System.out.println("The secret word was " + secret);
         }
 
         inp.close();
